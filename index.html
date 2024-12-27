@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bright Green Engineering</title>
+    <link rel="icon" href="logo.ico" type="image/x-icon"> <!-- Link to favicon -->
+
     <style>
         body {
             margin: 0;
@@ -16,7 +18,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 97%;
+            width: 96%;
             background-color: #333;
             color: #fff;
             display: flex;
@@ -26,19 +28,71 @@
             z-index: 1000;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
-        nav a {
+        nav .logo {
+            font-size: 1.7rem;
+            font-weight: bold;
+            margin-bottom: 0.5%;
+        }
+        nav .logo img {
+            width: 40px; /* Adjust the width */
+            height: 40px; /* Maintain aspect ratio */
+            justify-self: center;
+        }
+        nav .menu {
+            display: flex;
+            gap: 1rem;
+        }
+        nav .menu a {
             color: #fff;
             text-decoration: none;
-            margin: 0 1rem;
             transition: color 0.3s ease-in-out;
         }
-        nav a:hover {
+        nav .menu a:hover {
             color: #00ff7f;
         }
-        nav .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
+
+        /* Hamburger Menu */
+        nav .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+            padding-right: 15px;
         }
+        nav .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        /* Hamburger Active Animation */
+        nav .menu.active {
+            display: flex;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            nav .menu {
+                display: none;
+                margin-right: 4%;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background-color: #333;
+                padding: 1rem;
+                border-radius: 0 0 10px 10px;
+                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            }
+            nav .menu.active {
+                display: flex;
+            }
+            nav .hamburger {
+                display: flex;
+            }
+        }
+
 
         /* Hero Section */
         .hero {
@@ -176,8 +230,16 @@
 </head>
 <body>
     <nav>
-        <div class="logo">Bright Green Engineering</div>
-        <div>
+        <div class="logo"> 
+            <img src="https://i.postimg.cc/mgcXfvNf/images.png" alt="Bright Green Logo">
+            <span>Bright Green ENG</span> 
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="menu">
             <a href="#hero">Home</a>
             <a href="#about">About Us</a>
             <a href="#services">Services</a>
@@ -214,8 +276,8 @@
     </section>
 
     <section id="clients">
-        <h2>Our Clients</h2>
-        <p>We are proud to work with some of the most reputable companies worldwide.</p>
+        <h2>Our Projects</h2>
+        <p>We are proud to work on some of the most reputable projecs worldwide.</p>
         <div>
             <img src="client1.png" alt="Client 1">
             <img src="client2.png" alt="Client 2">
@@ -252,6 +314,10 @@
         function submitForm(event) {
             event.preventDefault();
             alert("Thank you for your message! We'll get back to you shortly.");
+        }
+        function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            menu.classList.toggle('active');
         }
     </script>
 </body>
